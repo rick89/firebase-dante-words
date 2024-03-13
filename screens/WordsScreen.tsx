@@ -26,6 +26,7 @@ import {
 	onValue,
 	remove,
 } from 'firebase/database';
+import { FontAwesome } from '@expo/vector-icons';
 import {
 	useFirebaseDeleteWord,
 	useFirebaseReadWords,
@@ -48,6 +49,7 @@ export default function WordsScreen() {
 	const filteredWords = words
 		.filter((word) => word.title.includes(searchTerm.toLowerCase()))
 		.reverse();
+	const [endReached, setEndReached] = useState(false);
 	const [inEditMode, setInEditMode] = useState(false);
 	const wordTouchableOpacityRef = useRef<
 		React.MutableRefObject<TouchableOpacity>[]
@@ -135,6 +137,7 @@ export default function WordsScreen() {
 
 	const Item = ({ item }: { item: WordItem }) => (
 		<WordCard
+			onEdit={() => {}}
 			word={item}
 			onDelete={(item) => {
 				handleConfirmDeleteWord(item);
@@ -167,6 +170,7 @@ export default function WordsScreen() {
 				data={filteredWords}
 				renderItem={renderItem}
 				keyExtractor={(item: WordItem) => item.id}
+				onEndReached={() => setEndReached(true)}
 			/>
 		);
 	}
@@ -247,6 +251,26 @@ export default function WordsScreen() {
 					>
 						<View style={{ flexGrow: 1, marginVertical: 16 }}>
 							{viewNode}
+							{!endReached && !isLoadingWords && (
+								// <View
+								// 	style={{
+								// 		flex: 1,
+								// 		flexGrow: 1,
+								// 		height: 30,
+								// 		backgroundColor: 'red',
+								// 	}}
+								// >
+								<FontAwesome
+									style={{
+										alignSelf: 'center',
+										marginTop: 10,
+									}}
+									name='angle-down'
+									size={24}
+									color='black'
+								/>
+								// </View>
+							)}
 						</View>
 						{searchTerm !== '' && !wordExistsInState() && (
 							<CustomButton

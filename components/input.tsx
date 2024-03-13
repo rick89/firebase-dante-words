@@ -16,7 +16,7 @@ export type TextInputProps = {
 	focus?: boolean;
 };
 
-export default function Input({
+export default function CustomInput({
 	placeholder,
 	value,
 	onChangeText,
