@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "311104952968",
+    "project_id": "dante-words",
+    "storage_bucket": "dante-words.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311104952968:android:fa0795c59a9ff2aa2d1d3d",
+        "android_client_info": {
+          "package_name": "com.anaonymous.dantewords"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311104952968-t7vocjfb10m74tlvt82aspg2k96vd1gn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjjUt628seUwKtHsUw81uQ21twmihNS90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311104952968-t7vocjfb10m74tlvt82aspg2k96vd1gn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "311104952968-5pqcaah5bshtfoloml1vsifrdipcjo04.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anonymous.dante-words"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
