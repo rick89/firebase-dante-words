@@ -4,7 +4,7 @@ import WordsScreen from './screens/WordsScreen';
 import { firebaseConfig } from './firebase.config';
 import TestScreen from './screens/TestScreen';
 import { View, Text } from 'react-native';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
 import RegisterScreen from './screens/RegisterScreen';
 import { ReactNode } from 'react';
 import LoginScreen from './screens/LoginScreen';
@@ -16,23 +16,10 @@ const auth = getAuth(app);
 const Stack = createStackNavigator();
 
 export default function App() {
-	const [user, setUser] = useState();
+	const [user, setUser] = useState<User>();
 	const [initializing, setInitializing] = useState(true);
-	let view: ReactNode = <LoginScreen />;
 
-	onAuthStateChanged(auth, (user) => {
-		console.log('onAuthStateChanged', user);
-		if (user) {
-			const email = user.email;
-			console.log('logged in with email', email);
-		} else {
-			//
-			console.log('not logged in');
-		}
-	});
-
-	// Handle user state changes
-	const onAuthStateChangedHandler = (user) => {
+	const onAuthStateChangedHandler = (user: User) => {
 		setUser(user);
 		if (initializing) {
 			setInitializing(false);
@@ -40,6 +27,7 @@ export default function App() {
 	};
 
 	useEffect(() => {
+		//@ToDo Fix this TS error
 		const unsubscribe = onAuthStateChanged(auth, onAuthStateChangedHandler);
 
 		return unsubscribe;
