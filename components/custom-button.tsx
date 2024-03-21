@@ -27,6 +27,7 @@ export default function CustomButton({
 					...styles.button,
 					backgroundColor: '#efefef',
 					borderColor: '#999',
+					paddingHorizontal: 20,
 				}}
 			>
 				<Text
@@ -47,6 +48,7 @@ export default function CustomButton({
 				...styles.button,
 				backgroundColor: '#42a4f5',
 				borderColor: '#42a4f5',
+				paddingHorizontal: 20,
 			}}
 		>
 			<Text

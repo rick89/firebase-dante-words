@@ -38,6 +38,7 @@ export default function CustomInput({
 	return (
 		<TextInput
 			autoComplete='off'
+			autoCapitalize='none'
 			ref={inputRef}
 			value={value}
 			autoCorrect={false}
