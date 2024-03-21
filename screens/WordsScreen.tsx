@@ -5,19 +5,14 @@ import {
 	View,
 	TouchableOpacity,
 	Alert,
-	ScrollView,
-	KeyboardAvoidingView,
-	Platform,
 	ActivityIndicator,
 	ListRenderItem,
 	FlatList,
-	StyleSheet,
 } from 'react-native';
 import SearchInput from '../components/search-input.tsx';
 import { DateTime } from 'luxon';
 import { parseFirebaseWords, uniqueId } from '../utils.ts';
 import CustomButton from '../components/custom-button.tsx';
-import Input from '../components/input.tsx';
 import {
 	getDatabase,
 	ref,
@@ -27,12 +22,8 @@ import {
 	remove,
 } from 'firebase/database';
 import { FontAwesome } from '@expo/vector-icons';
-import {
-	useFirebaseDeleteWord,
-	useFirebaseReadWords,
-	useFirebaseSaveWord,
-} from '../hooks.ts';
 import { WordCard } from '../components/word-card.tsx';
+import { getAuth } from 'firebase/auth';
 
 export interface Word {
 	id: string;
@@ -174,6 +165,18 @@ export default function WordsScreen() {
 			/>
 		);
 	}
+	const auth = getAuth();
+
+	const handleLogout = () => {
+		Alert.alert('Logout', 'Are you sure you want to logout?', [
+			{ text: 'Yes', onPress: () => auth.signOut() },
+			{
+				text: 'No',
+				onPress: () => console.log('Cancel Pressed'),
+				style: 'cancel',
+			},
+		]);
+	};
 
 	return (
 		// <KeyboardAvoidingView
@@ -280,6 +283,17 @@ export default function WordsScreen() {
 						)}
 					</View>
 				</View>
+				<TouchableOpacity onPress={() => handleLogout()}>
+					<Text
+						style={{
+							fontWeight: 'bold',
+							marginLeft: 'auto',
+							color: 'red',
+						}}
+					>
+						Logout
+					</Text>
+				</TouchableOpacity>
 			</View>
 		</SafeAreaView>
 		// </KeyboardAvoidingView>

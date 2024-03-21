@@ -12,8 +12,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+
 const Stack = createStackNavigator();
+
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+const auth = initializeAuth(app, {
+	persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+});
 
 export default function App() {
 	const [user, setUser] = useState<User>();
