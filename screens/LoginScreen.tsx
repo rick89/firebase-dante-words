@@ -6,8 +6,8 @@ import CustomButton from '../components/custom-button';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function LoginScreen() {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('ric@me.com');
+	const [password, setPassword] = useState('kinley6235');
 	const auth = getAuth();
 	const navigation = useNavigation();
 
